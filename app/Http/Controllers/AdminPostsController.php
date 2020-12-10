@@ -13,7 +13,9 @@ class AdminPostsController extends Controller
 
     public function create()
     {
-        return view('admin.posts.create');
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $data = ['posts' => $posts];
+        return view('admin.posts.create', $data);
     }
 
     public function edit($id)
